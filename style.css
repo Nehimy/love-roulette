@@ -8,13 +8,14 @@
 }
 
 body {
-    background: red;
+    background: maroon;
 }
 .title {
     color:#fff;
     font-size: 40px;
     font-family: 'Carter One', cursive;
     font-family: 'Solitreo', cursive;
+    text-align: center;
 }
 
 .roulette {
