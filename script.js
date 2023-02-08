@@ -18,11 +18,11 @@ function stop(e){
   y2=  e.clientY;
   console.log("x2:" + x2);
   console.log("y2:" + y2);
-
-  // document.getElementsByClassName("roulette").innerHTML = "hello";
+  move(x1, y1, x2, y2);
 }
 
 function move(x1, y1, x2, y2) {
-  distance= (x1+x2) ;
+  distance= Math.sqrt((x2 - x1) + (y2-y1));
+  distance= Math.round(distance);
   console.log(distance);
 }
