@@ -47,5 +47,6 @@ function move(x1, y1, x2, y2) {
   //console.log("giros:" + 360 * torque);
 
   document.querySelector('.roulette').style.transform = "rotate("+Math.pow(360, torque) + "deg)";
- // document.querySelector('.roulette').style.transform = "rotate("+(360 * torque) + "deg)";
 }
+
+ document.querySelector('.roulette').style.transform = "rotate(0deg)";
