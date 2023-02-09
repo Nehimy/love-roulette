@@ -1,0 +1,4 @@
+* ¿Qué falta?
+[ x]  Encontar la distancia entre 2 puntos
+[ x] Insertar el valor de la distancia en el css o html
+[ x] Usar queryselector

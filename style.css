@@ -20,7 +20,8 @@ body {
 }
 
 .roulette {
-    animation: rotate 5s infinite linear;
+    /* animation: rotate 5s infinite linear;*/
+    transition: 10s  cubic-bezier(0, 0.55, 0.45, 1);
 }
 
 
