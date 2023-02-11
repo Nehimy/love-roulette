@@ -29,24 +29,24 @@ function rouletteDragStop(e){
 function move(x1, y1, x2, y2) {
 
   distance= Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2-y1), 2));
-  console.log ("test:" + distance);
   distance= Math.round(distance);
   console.log("distance:" + distance);
 
   torque= Math.round(551/distance);
   console.log ("torque:" + torque);
   //document.querySelector('.roulette').style.animation= "rotate " + torque + "s";
-  //document.getElementById("myDIV").style.animation = "mynewmove 4s 2";
+  //document.querySelector('.roulette').style.transform = "rotate(0deg)";
 
-  // document.querySelector('.roulette').style.animation= "@keyframes rotate {0%{transform: rotate(0deg);} 100%{transform:rotate(" + torque +"deg);}";
-  // document.querySelector('.roulette').style.animation= "100%{transform: rotate( " + torque + "deg);}";
-
-  // document.querySelector('.roulette').style.animation.keyframes.rotate= "100%{transform: rotate( " + torque + "deg);}";
-
-  //document.querySelector('.roulette').style.animation= "rotate " + torque + "s";
-  //console.log("giros:" + 360 * torque);
-
-  document.querySelector('.roulette').style.transform = "rotate("+Math.pow(360, torque) + "deg)";
+  if (torque>=4) {
+    torque=0;
+    console.log("jale más fuerte");
+    document.querySelector('.roulette').style.transform = "rotate(0deg)";
+    alert("Jale más fuerte");
+  }else   if (torque<=3) {
+    // torque= Math.floor(Math.random() * 20) + 13;
+    torque= Math.floor(Math.random() * (20 - 12 + 1) ) + 12;
+    console.log("nuevo valor de torque:" + torque);
+    //document.querySelector('.roulette').style.transform = "rotate("+Math.pow(360, torque) + "deg)";
+    document.querySelector('.roulette').style.transform = "rotate("+ (360 * torque) + "deg)";
+  }
 }
-
- document.querySelector('.roulette').style.transform = "rotate(0deg)";
