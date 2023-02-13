@@ -34,19 +34,16 @@ function move(x1, y1, x2, y2) {
 
   torque= Math.round(551/distance);
   console.log ("torque:" + torque);
-  //document.querySelector('.roulette').style.animation= "rotate " + torque + "s";
-  //document.querySelector('.roulette').style.transform = "rotate(0deg)";
 
   if (torque>=4) {
     torque=0;
     console.log("jale más fuerte");
     document.querySelector('.roulette').style.transform = "rotate(0deg)";
-    alert("Jale más fuerte");
+
   }else   if (torque<=3) {
     // torque= Math.floor(Math.random() * 20) + 13;
     torque= Math.floor(Math.random() * (20 - 12 + 1) ) + 12;
     console.log("nuevo valor de torque:" + torque);
-    //document.querySelector('.roulette').style.transform = "rotate("+Math.pow(360, torque) + "deg)";
     document.querySelector('.roulette').style.transform = "rotate("+ (360 * torque) + "deg)";
   }
 }

@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Carter+One&family=Solitreo&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap');
+
 .container {
     display:grid;
     height: 100vh;
@@ -35,4 +37,21 @@ body {
     100%{
         transform: rotate(360deg);
     }
+}
+
+.alert-container {
+  height: 150px;
+  width: 250px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+  display: grid;
+  place-content: center;
+}
+
+.alert {
+    color: dimgray;
+    font-family: 'Josefin Sans', sans-serif;
+
+
 }
