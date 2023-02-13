@@ -39,19 +39,39 @@ body {
     }
 }
 
-.alert-container {
+.message-alert {
   height: 150px;
   width: 250px;
   background: white;
   border-radius: 10px;
   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
   display: grid;
-  place-content: center;
+  /* place-content: center; */
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+}
+
+.alert-container {
+    grid-column: 2;
+    grid-row: 2;
 }
 
 .alert {
     color: dimgray;
     font-family: 'Josefin Sans', sans-serif;
+    text-align: center;
+}
 
+.container-delete {
+    display: grid;
+    justify-content: right;
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.delete{
+    width: 30px;
+    height: 30px;
+    margin: 5px 5px 0px 0px;
 
 }
