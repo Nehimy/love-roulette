@@ -35,15 +35,34 @@ function move(x1, y1, x2, y2) {
   torque= Math.round(551/distance);
   console.log ("torque:" + torque);
 
-  if (torque>=4) {
-    torque=0;
-    console.log("jale más fuerte");
-    document.querySelector('.roulette').style.transform = "rotate(0deg)";
-
-  }else   if (torque<=3) {
+  if (torque<3) {
     // torque= Math.floor(Math.random() * 20) + 13;
-    torque= Math.floor(Math.random() * (20 - 12 + 1) ) + 12;
+    torque= Math.floor(Math.random() * (20 - 5 + 1) ) + 5;
     console.log("nuevo valor de torque:" + torque);
-    document.querySelector('.roulette').style.transform = "rotate("+ (360 * torque) + "deg)";
+    console.log("no deve mover si es > 3");
+
+    // document.querySelector('.roulette').style.transform = 'rotate' + Math.floor(Math.random() * (10 - 5 + 1) ) + 5;
+    document.querySelector('.roulette').style.transform = "rotate("+ (Math.pow(360, torque)) + "deg)";
+
+  }else if (torque>=3) {
+    // torque=0;
+    console.log("jale más fuerte");
+
+    document.querySelector('.message-alert').style.display='grid';
+    document.querySelector('.container-transparent').style.display='grid';
+    // document.querySelector('.roulette').style.transform = "rotate(0deg)";
+
   }
+}
+
+
+/******************************** Delete ********************************/
+
+let img = document.querySelector('.message-alert img');
+
+img.onclick = function(event){
+
+  document.querySelector('.message-alert').style.display='none';
+  document.querySelector('.container-transparent').style.display='none';
+
 }
