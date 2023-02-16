@@ -4,56 +4,81 @@ let y1;
 let x2;
 let y2;
 
-let distance;
+let Ti, Tf, Tt, V, F, angle;
 
-let torque;
+let distance, torque;
+let previousValue=0;
+
+/*
+  Eventos arrastre
+
+  Ondragstart: Cuando hacemos click empieza el arrastre.
+  Ondragend: Cuando soltamos el click termina el arrastre.
+ */
 
 document.querySelector('.roulette').ondragstart=rouletteDragStar;
 document.querySelector('.roulette').ondragend=rouletteDragStop;
 
+/*
+  Inicio del arrastre
+*/
 function rouletteDragStar(e){
- x1=  e.clientX;
- y1=  e.clientY;
-  console.log("x1:" + x1);
-  console.log("y1:" + y1);
+  x1=  e.clientX;
+  y1=  e.clientY;
+  Ti= Date.now();
 }
 
+/*
+  Fin del arrastre
+*/
 function rouletteDragStop(e){
   x2=  e.clientX;
   y2=  e.clientY;
-  console.log("x2:" + x2);
-  console.log("y2:" + y2);
-  move(x1, y1, x2, y2);
+  Tf= Date.now();
+  move(x1, y1, x2, y2, Ti, Tf);
 }
 
-function move(x1, y1, x2, y2) {
-
+function move(x1, y1, x2, y2, Ti, Tf) {
+  // Distancia entre 2 puntos
   distance= Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2-y1), 2));
   distance= Math.round(distance);
-  console.log("distance:" + distance);
 
-  torque= Math.round(551/distance);
-  console.log ("torque:" + torque);
+  // Tiempo total
+  Tt= Tf - Ti;
+  console.log("Tf:" + Tf);
+  console.log("Ti:" + Ti);
 
-  if (torque<3) {
-    // torque= Math.floor(Math.random() * 20) + 13;
-    torque= Math.floor(Math.random() * (20 - 5 + 1) ) + 5;
-    console.log("nuevo valor de torque:" + torque);
-    console.log("no deve mover si es > 3");
+  console.log("Tt:" + Tt);
+  V= distance / Tt;
+  console.log("V=" + V);
 
-    // document.querySelector('.roulette').style.transform = 'rotate' + Math.floor(Math.random() * (10 - 5 + 1) ) + 5;
-    document.querySelector('.roulette').style.transform = "rotate("+ (Math.pow(360, torque)) + "deg)";
+  F= V * 9.8
+  console.log("F:" + F);
 
-  }else if (torque>=3) {
-    // torque=0;
-    console.log("jale más fuerte");
+  torque= Math.round(306/F);
+  console.log("torque:" + torque);
 
+  if (torque>89) {
     document.querySelector('.message-alert').style.display='grid';
     document.querySelector('.container-transparent').style.display='grid';
-    // document.querySelector('.roulette').style.transform = "rotate(0deg)";
 
+  }else {
+    torque= Math.floor(Math.random() * (22 - 5 + 1) ) + 5;
+    // document.querySelector('.roulette').style.transform = "rotate("+ (Math.pow(360, torque)) + "deg)";
+    angle= Math.floor(Math.random() * (359 - 30 + 1) ) + 30;
+    console.log("angle:" + angle);
+    torque= (360 * torque) + 360 + angle +  previousValue;
+    previousValue = torque;
+    console.log(" previousValue:" +  previousValue);
+    // document.querySelector('.roulette').style.transform = "rotate("+ 360*torque + "deg)";
+    document.querySelector('.roulette').style.transform = "rotate("+ torque + "deg)";
+  }
+  if(previousValue >= 11421){
+    previousValue=0;
   }
 }
+
+
 
 
 /******************************** Delete ********************************/
